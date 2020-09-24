@@ -1,13 +1,54 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
 
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter-SemiBold.woff2") format("woff2");
+    font-weight: 500;
+}
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
 :root {
+--global-color-neutral-xxxx-light: #E2E3E7;
+--global-color-neutral-xxx-light: #CACCD4; 
+--global-color-neutral-xx-light: #E2E3E7;
+--global-color-neutral-x-light: #B5B6C0;
+--global-color-neutral-light: #A0A1AD;
+--global-color-neutral: #8B8C9A;
+--global-color-neutral-dark: #757787;
+--global-color-neutral-x-dark: #606274;
+--global-color-neutral-xx-dark: #4B4C60;
+--global-color-neutral-xxx-dark: #35374D;
+--global-color-neutral-xxxx-dark: #20223A;
 
+--global-color-alpha-light: #4F95FF;
+--global-color-alpha: #3385FF;
+--global-color-alpha-dark: #2E77E6;
+--global-color-transparent:  #3385ff4d;
+--global-color-x-transparent: #ff333347;
+
+--global-baseline: 8px;
+--global-fontsize-sm: 14px;
+--global-fontsize-md: 16px;
+--global-fontsize-lg: 18px;
+--global-fontsize-xl: 20px;
+--global-fontsize-xxl: 26px;
+
+--global-whitespace-xs: calc(var( --global-baseline) / 2); /* = 4px */
+--global-whitespace-sm: calc(var( --global-baseline) / 1); /* = 8px */
+--global-whitespace-md: calc(var( --global-baseline) *2); /* = 16px */
+--global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+--global-whitespace-lg: calc(var( --global-baseline) * 4); /* = 32px */   
+--global-whitespace-xl: calc(var(--global-whitespace-md) * 3); /* = 48px */    
+--global-whitespace-xxl: calc(var(--global-whitespace-md) * 4); /* = 64px */   
 }
 
 /* CSS variables here */
@@ -26,11 +67,11 @@ html {
     font-size: 16px;
     line-height: 1.5;
     font-family: Helvetica, arial, sans-serif;
-    color: grey;
+    color: black;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: white;
+    background-color: #F5F6FA;
 }
 
 *,
@@ -47,13 +88,13 @@ html {
 */
 
 ::-moz-selection {
-    background: HotPink;
+    background: blue;
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: HotPink;
+    background: blue;
     color: white;
     text-shadow: none;
 }
@@ -88,19 +129,19 @@ h3 {
 h1 {
     font-size: 36px;
     line-height: 48px;
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 h2 {
     font-size: 32px;
     line-height: 40px;
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 h3 {
     font-size: 26px;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 h4,
@@ -108,7 +149,7 @@ h5,
 h6 {
     font-size: 20px;
     line-height: 24px;
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 p,
@@ -118,12 +159,12 @@ dl,
 table,
 address,
 figure {
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 ul,
 ol {
-    padding-left: 24px;
+    padding-left: calc(var(--global-baseline) * 3);
 }
 
 li ul,
@@ -135,7 +176,7 @@ blockquote {
     font-style: normal;
     font-size: 23px;
     line-height: 32px;
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 blockquote * {
@@ -147,29 +188,37 @@ figcaption {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    margin-top: 8px;
+    margin-top: calc(var( --global-baseline) / 1);
 }
 
 hr {
     border: 0;
     height: 1px;
     background: LightGrey;
-    margin: 0 0 24px;
+    margin: 0 0 calc(var(--global-baseline) * 3);
 }
 
 a {
-    color: HotPink;
+    color: #3385FF;
     transition: all .1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: HotPink;
+    color: #2E77E6;
 }
 
 a:hover,
 a:focus {
-    color: DeepPink;
+    color: #1B4186;
+}
+
+input{
+    display: block;
+}
+
+label{
+    display: block;
 }
 
 /*------------------------------------*\
@@ -184,29 +233,32 @@ a:focus {
 
 .o-row {
     position: relative;
-    padding: 24px 24px 0;
+    padding: calc(var(--global-baseline) * 3) calc(var(--global-baseline) * 3)  0;
 }
 
 .o-row--login {
     /* stuff here to align the card */
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
 }
 
 /* size modifiers */
 
 .o-row--lg {
-    padding-top: 48px;
-    padding-bottom: 24px;
+    padding-top: calc(var(--global-whitespace-md) * 3);
+    padding-bottom: calc(var(--global-baseline) * 3);
 }
 
 .o-row--xl {
     padding-top: 72px;
-    padding-bottom: 48px;
+    padding-bottom: calc(var(--global-whitespace-md) * 3);
 }
 
 @media (min-width: 768px) {
     .o-row {
-        padding-left: 48px;
-        padding-right: 48px;
+        padding-left: calc(var(--global-whitespace-md) * 3);
+        padding-right: calc(var(--global-whitespace-md) * 3);
     }
 }
 
@@ -247,7 +299,7 @@ a:focus {
 @media (min-width: 768px) {
     .o-section--lg + .o-section--lg,
     .o-section--xl + .o-section--xl {
-        padding-top: 48px;
+        padding-top: calc(var(--global-whitespace-md) * 3);
     }
 }
 
@@ -431,7 +483,24 @@ a:focus {
     ---
     Website main logo
 */
-
+.c-logo{
+    height: 24px;
+}
+.c-logo__symbol{
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.c-logo__path--1{
+    fill: #20223A;
+}
+.c-logo__path--2{
+    fill: #3385FF;
+}
+.c-logo__path--3{
+    fill: #1B4186;
+}
 /*
     Component: Card
     ---
@@ -443,7 +512,11 @@ a:focus {
     ---
     Everything form related here
 */
-
+.form-field--option{
+    display:flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
 /*
     Component: Input
     ---
@@ -451,10 +524,24 @@ a:focus {
 */
 
 .c-input {
-
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    outline: none;
+    border: 1px solid #E2E3E7;
+    border-radius: 3px;
+    font-family: "inter";
+    color: #20223a;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 12px;
 }
 
 .c-input:focus {
+    outline: none;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d; 
 }
 
 /*
@@ -464,9 +551,14 @@ a:focus {
 */
 
 .c-label {
-
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: calc(var( --global-baseline) / 1);
+    color: #606274;
 }
-
+.c-label--option{
+    margin-left: calc(var( --global-baseline) / 1);
+}
 /* If a input is focused within the form-field class change te color of the label */
 
 .c-form-field:focus-within .c-label {
@@ -480,25 +572,83 @@ a:focus {
 */
 
 .c-button {
-
+    outline: none;
+    background: #3385FF;
+    color: white;
+    width:100%;
+    font-family: inherit;
+    font-weight: 500;
+    border: 0px solid #2E77E6;
+    font-size: 16px;
+    padding: 12px;
+    line-height: 24px;
+    border-radius: 3px;
 }
 
 .c-button:hover {
-
+    background-color: #2E77E6;
+    outline: none;
+    border: 0px solid #2E77E6;
 }
 
 .c-button:focus {
-
+    background-color: #3385FF;
+    border: 1px solid #2E77E6;
+    box-shadow: h-offset v-offset blur spread color;
+    box-shadow: 0 0 0 3px #3385ff4d; 
+    outline: none;
 }
 
 .c-button:active {
-
+    background-color:#3385FF;
+    border: 1px solid #2E77E6;
+    outline: none;
 }
 
 .c-button--block {
 
 }
 
+.c-card{
+    background-color: white;
+    border-radius: 3px;
+    border: 0px solid ;
+}
+.c-card__body{
+    padding: 12px calc(var(--global-whitespace-md) * 3);
+}
+.c-card__title{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: calc(var(--global-whitespace-md) * 3);
+    margin-top: 56px;
+}
+.c-card__footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border-top: 1px solid var(--global-color-neutral-xxxx-light);
+}
+.c-card__footer p {
+    margin:24px 12px;
+}
+
+@media(max-width:530px){
+
+    .c-card__body{
+        padding: 6px 24px;
+        font-size: 14px;
+    
+    }
+    .c-card__title{
+        font-size: 16px;
+    }
+}
 /*------------------------------------*\
 #UTILITIES
 \*------------------------------------*/
@@ -510,7 +660,7 @@ a:focus {
 */
 
 .u-color-neutral-base {
-    color: Silver;
+    color: #757787;
 }
 
 .u-color-neutral-dark {
